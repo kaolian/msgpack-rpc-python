@@ -168,7 +168,7 @@ class ServerTransport(object):
     def listen(self, server):
         self._server = server;
         self._mp_server = MessagePackServer(self, io_loop=self._server._loop._ioloop, encodings=self._encodings)
-        self._mp_server.listen(self._address.port)
+        self._mp_server.listen(self._address.port, address=self._address.host)
 
     def close(self):
         self._mp_server.stop()
